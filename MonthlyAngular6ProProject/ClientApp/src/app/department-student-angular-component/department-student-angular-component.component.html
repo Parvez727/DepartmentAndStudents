@@ -1,0 +1,176 @@
+<style>
+  .form-group label {
+    justify-content: left !important;
+  }
+</style>
+
+<div class="row justify-content-center align-students-center ml-2">
+
+
+  <form [formGroup]="angForm" novalidate>
+
+    <h1 myRed>
+      Students CRUD in Angular6!
+    </h1>
+    <div class="row">
+      <div class="col-md-4">
+        <h2 myRed>Department Table</h2>
+        <div class="form-group">
+          <label for="departmentid">Department ID</label>
+          <input id="departmentid" name="departmentid" #departmentid [value]=departmentid2 class="form-control" (input)="departmentchange()" [(ngModel)]="departmentid2" formControlName="departmentid" placeholder="Department Id" />
+          <div *ngIf="angForm.controls['departmentid'].invalid && (angForm.controls['departmentid'].dirty || angForm.controls['departmentid'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['departmentid'].errors.required">
+              departmentid is required.
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="form-group">
+          <label for="subjectname">Subject Name</label>
+          <input id="subjectname" name="subjectname" #subjectname [value]=subjectname2 class="form-control" [(ngModel)]="subjectname2" formControlName="subjectname" placeholder="Enter Subject Name" />
+          <div *ngIf="angForm.controls['subjectname'].invalid && (angForm.controls['subjectname'].dirty || angForm.controls['subjectname'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['subjectname'].errors.required">
+              subjectname is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input id="location" name="location" #location [value]=location2 class="form-control" [(ngModel)]="location2" formControlName="location" placeholder="Enter Location" />
+          <div *ngIf="angForm.controls['location'].invalid && (angForm.controls['location'].dirty || angForm.controls['location'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['location'].errors.required">
+              location is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group form-inline">
+          <label class="col-md-4 text-left" for="studentid">Student ID:</label>
+          <input name="studentid" id="studentid" #studentid [value]=studentid2 class="form-control col-md-8" [(ngModel)]="studentid2" formControlName="studentid" placeholder="Enter Student Id" />
+          <div *ngIf="angForm.controls['studentid'].invalid && (angForm.controls['studentid'].dirty || angForm.controls['studentid'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['studentid'].errors.required">
+              studentid is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-md-4 text-left" for="studentname">Student Name:</label>
+          <input name="studentname" id="studentname" #studentname [value]=studentname2 class="form-control col-md-8" [(ngModel)]=studentname2 formControlName="studentname" placeholder="Enter Student Name" />
+          <div *ngIf="angForm.controls['studentname'].invalid && (angForm.controls['studentname'].dirty || angForm.controls['studentname'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['studentname'].errors.required">
+              studentname is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-md-4 text-left" for="studentclass">Class:</label>
+          <input name="studentclass" id="studentclass" #studentclass [value]=studentclass2 class="form-control col-md-8" [(ngModel)]="studentclass2" formControlName="studentclass" placeholder="Enter Class" />
+          <div *ngIf="angForm.controls['studentclass'].invalid && (angForm.controls['studentclass'].dirty || angForm.controls['studentclass'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['studentclass'].errors.required">
+              studentclass is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-md-4 text-left" for="gender">Gender:</label>
+          <input name="gender" id="gender" #gender [value]=gender2 class="form-control col-md-8" [(ngModel)]="gender2" formControlName="gender" placeholder="Enter Gender" />
+          <div *ngIf="angForm.controls['gender'].invalid && (angForm.controls['gender'].dirty || angForm.controls['gender'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['gender'].errors.required">
+              gender is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-md-4 text-left" for="present">Present:</label>
+          <input type="checkbox" name="present" id="present" #present [value]=present2 class="form-control col-md-4" [(ngModel)]="present2" formControlName="present" placeholder="Enter Present" />
+          <div *ngIf="angForm.controls['present'].invalid && (angForm.controls['present'].dirty || angForm.controls['present'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['present'].errors.required">
+              present is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-inline">
+          <label class="col-md-4 text-left" for="date">Date:</label>
+          <input type="date" name="date" id="date" #date [value]=date2 class="form-control col-md-8" [(ngModel)]="date2" formControlName="date" />
+          <div *ngIf="angForm.controls['date'].invalid && (angForm.controls['date'].dirty || angForm.controls['date'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['date'].errors.required">
+              date is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-inline">
+          <label class="image-upload-container btn btn-bwm col-md-4 text-left">
+            <span>Select Image</span>
+          </label>
+          <input type="file" name="picture" id="picture" (change)="onFileChanged($event)" class="form-control col-md-8" formControlName="picture"  />
+          <div *ngIf="angForm.controls['picture'].invalid && (angForm.controls['picture'].dirty || angForm.controls['picture'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['picture'].errors.required">
+              picture is required.
+            </div>
+          </div>
+
+          <br />
+        </div>
+
+        <div class="form-group form-inline">
+          <label class="col-md-4 text-left" for="payment">Payment:</label>
+          <input name="payment" id="payment" #payment [value]=payment2 class="form-control col-md-8" [(ngModel)]="payment2" formControlName="payment"  />
+          <div *ngIf="angForm.controls['payment'].invalid && (angForm.controls['payment'].dirty || angForm.controls['payment'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['payment'].errors.required">
+              payment is required.
+            </div>
+          </div>
+        </div>
+
+
+        <button type="submit" (click)="addStudents(studentid.value, studentname.value,studentclass.value,departmentid.value,gender.value,present.value,date.value,'',payment.value)" class="btn-primary btn mr-3">Add</button>
+        <button type="submit" (click)="updateStudents(studentid, studentname,studentclass,departmentid,gender,present,date,payment)" class="btn btn-info mr-3">Update</button>
+        <button type="button" (click)="deleteStudents()" class="btn btn-success mr-3">Delete</button>
+      </div>
+    </div>
+
+  </form>
+
+
+
+</div>
+<br />
+<br />
+
+<div class="row" >
+  <table class="table table-condensed">
+    <tr>
+      <th>SL No</th>
+      <th>Student Id</th>
+      <th>Student Name</th>
+      <th>Student Class</th>
+      <th>Gender</th>
+      <th>Present</th>
+      <th>Date</th>
+      <th>Picture</th>
+      <th>Payment</th>
+
+    </tr>
+    <tr *ngFor="let item of students let i=index" (click)="show(i,item.studentid,item.studentname,item.studentclass,item.gender,item.present,item.date,item.picture,item.payment)">
+      <td>
+        {{i+1}}
+      </td>
+      <td> {{item.studentid}}</td>
+      <td> {{item.studentname}}</td>
+      <td> {{item.studentclass}}</td>
+      <td> {{item.gender}}</td>
+      <td> {{item.present}}</td>
+      <td> {{item.date | date:'yyyy-MM-dd'}}</td>
+      <td><img width="100" src="/uploads/{{item.picture}}" /></td>
+      <td> {{item.payment | currency:'TK'}}</td>
+
+    </tr>
+  </table>
+  <button type="button" (click)="saveAll()" class="btn-primary btn mr-3">Save</button>
+
+  <button type="button" (click)="deleteAll()" class="btn btn-success mr-3">Remove All</button>
+</div>

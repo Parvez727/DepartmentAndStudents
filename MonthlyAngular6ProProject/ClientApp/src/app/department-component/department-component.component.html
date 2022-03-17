@@ -1,0 +1,14 @@
+<p>dept-component works!</p>
+<div class="card" myRed>
+  <div class="card-header">
+    <h3 myRed>Department and Total Students</h3>
+  </div>
+  <div *ngFor="let item of students let i=index" class="card-body">
+    <a href="https://localhost:44393/deptstudent?departmentid={{item.departmentid}}">{{item.departmentid}} ({{item.subjectname}})</a>
+
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-primary" id="addnew" (click)="new()">Add New</button>
+  </div>
+
+</div>
